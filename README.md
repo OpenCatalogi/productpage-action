@@ -15,7 +15,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Update publiccode.yaml
+      - name: Deploy Product Github Page
         uses: OpenCatalogi/productpage-action@latest
 ````
 
@@ -34,6 +34,21 @@ To gain a bit more control and only trigger a page build manually usw
 on:
   workflow_dispatch:
 ````
+> **Warning**
+> If you do not supply the action with an access token or an SSH key, you must access your repositories settings and provide `Read and Write Permissions` to the provided `GITHUB_TOKEN`, otherwise you'll potentially run into permission issues. Alternatively you can set the following in your workflow file to grant the action the permissions it needs.
+
+```yml
+permissions:
+  contents: write
+```
+
+> **Note**
+> When you first run the workflow you need to `manually` activate github pages on your repository! Head over to setting -> pages. Select `deploy form a branch` as a source and `gh-pages` as your branche (unles you configured the page to be build in a differend branche)
+> ![Page Settings](docs/page_settings.png)
+> Afther pressing save head over tot the actions and take a look at the `pages build and deployment` action
+> ![Page Action](docs/page_build.png)
+> When it is done it will also tell you under wich link you can find your page
+> ![Page Action done](docs/page_build_done.png)
 
 ## Input
 | Input Name                          | Description                                                                   | Default Value                                                            |
@@ -63,5 +78,20 @@ on:
 | `version`       | New version of the `softwareVersion` field in `publiccode.yml`          |
 | `releaseDate`   | New release date of the `releaseDate` field in `publiccode.yml`        |
 
+## Special thanxs
+As is the case with most software this action is based on the work of others, and uses there code. We would like to give a special shout out to the following parties and thier code
 
+- [James Ives | github-pages-deploy-action#readme](https://github.com/JamesIves/github-pages-deploy-action#readme]).
+- [SpicyPizza | create-envfile](https://github.com/SpicyPizza/create-envfile).
+
+## Maintainers
+This software is maintained by [Conduction b.v.](https://conduction.nl/)
+
+## License
+© 2023 Gemeente Rotterdam
+
+Licensed under the EUPL. The version control system provides attribution for specific lines of code.
+
+## Remarks
+This GitHub Action is published in the GitHub Marketplace. As such, you can find the [Terms of Service here](). Also, [here]() you can find the GitHub Marketplace Developer Agreement.
 

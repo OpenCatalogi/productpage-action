@@ -141,7 +141,7 @@ runs:
       run: cd pwa && npm run build
 
     - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@4.1.0
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
         branch: ${{ inputs.github_pages_branch }}
         folder: pwa/public
