@@ -18,7 +18,7 @@ inputs:
   repository:
     description: 'The github repository to use (could be an external repository)'
     required: false
-    default: ${{ github.event.repository.url }}
+    default: ${{ github.event.repository.name }}
   github_api_base_url:
     description: 'The base url to get the README.md from'
     required: false
