@@ -71,6 +71,22 @@ inputs:
     description: 'The class name of the desired nl design theme'
     required: false
     default: 'open-webconcept-theme'
+  contact_tel:
+    description: 'A phone number where your organisation is reachable'
+    required: false
+    default: '012-3456789'
+  contact_email:
+    description: 'A phone number where your organisation is reachable'
+    required: false
+    default: 'info@openwebconcept.nl'
+  contact_website:
+    description: 'A phone number where your organisation is reachable'
+    required: false
+    default: 'https://openwebconcept.nl'
+  contact_adres:
+    description: 'A phone number where your organisation is reachable'
+    required: false
+    default: 'Dorpsplein 1, 1000 AA Zuid-drecht'
   gitname:
     description: 'Git name configuration for bump commit'
     required: false
@@ -99,6 +115,10 @@ runs:
     - name: Make envfile
       uses: SpicyPizza/create-envfile@v2.0
       with:
+        # for lagacy purposes
+        envkey_GITHUB_REPOSITORY_NAME: ${{ inputs.repository }}
+        envkey_USE_GITHUB_REPOSITORY_NAME_AS_PATH_PREFIX: ${{ inputs.github_repository_name_as_prefix }}
+        # Correct env values
         envkey_GATSBY_USE_GITHUB_REPOSITORY_NAME_AS_PATH_PREFIX: ${{ inputs.github_repository_name_as_prefix }}
         envkey_GATSBY_GITHUB_REPOSITORY_NAME: ${{ inputs.repository }}
         envkey_GATSBY_GITHUB_API_BASE_URL: ${{ inputs.github_api_base_url }}
@@ -114,6 +134,10 @@ runs:
         envkey_GATSBY_JUMBOTRON_SVG: ${{ inputs.jumbotron_logo }}
         envkey_GATSBY_FOOTER_LOGO_URL: ${{ inputs.footer_logo }}
         envkey_GATSBY_FOOTER_LOGO_HREF: ${{ inputs.footer_logo_url }}
+        envkey_GATSBY_CONTACT_TEL: ${{ inputs.contact_tel }}
+        envkey_GATSBY_CONTACT_EMAIL: ${{ inputs.contact_email }}
+        envkey_GATSBY_CONTACT_WEBSITE: ${{ inputs.contact_website }}
+        envkey_GATSBY_CONTACT_ADRES: ${{ inputs.contact_adres }}
         envkey_GATSBY_NL_DESIGN_THEME_CLASSNAME: ${{ inputs.nl_design_theme_classname }}
 
         directory: pwa/static
