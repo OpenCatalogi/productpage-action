@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy Product Github Page
-        uses: OpenCatalogi/productpage-action@latest
+        uses: OpenCatalogi/productpage-action@1.0.0
 ````
 
 In the above example an page is created or updated every night at 0:00, we advise this route becouse you will autmaticly suplied with fixes and new features. You can however also choose other options to trigger a page build
@@ -32,6 +32,7 @@ on:
 To gain a bit more control and only trigger a page build manually usw
 ````yaml
 on:
+  
   workflow_dispatch:
 ````
 > **Warning**
@@ -78,6 +79,29 @@ permissions:
 | `version`       | New version of the `softwareVersion` field in `publiccode.yml`          |
 | `releaseDate`   | New release date of the `releaseDate` field in `publiccode.yml`        |
 
+## Tips
+Besides making your product readable for humans its als a good idea to make it machisne readable, this helps your project to be indexed by the likes of opencatalogi.nl. Luckily this is very simple, just ad the publiccode action to your workflow
+
+````yaml
+name: My PublicCode Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Product Github Page
+        uses: OpenCatalogi/productpage-action@1
+      - name: Update publiccode.yaml
+        uses: OpenCatalogi/publiccode-action@1
+````
+
+[Read more](https://github.com/marketplace/actions/create-or-update-publiccode-yaml) about the publiccode action
+
 ## Special thanxs
 As is the case with most software this action is based on the work of others, and uses there code. We would like to give a special shout out to the following parties and thier code
 
@@ -88,7 +112,7 @@ As is the case with most software this action is based on the work of others, an
 This software is maintained by [Conduction b.v.](https://conduction.nl/)
 
 ## License
-© 2023 Gemeente Rotterdam
+© 2023 Conduction B.V.
 
 Licensed under the EUPL. The version control system provides attribution for specific lines of code.
 
