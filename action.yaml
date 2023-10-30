@@ -107,17 +107,39 @@ inputs:
     required: false
     type: string
     default: 'Dorpsplein 1, 1000 AA Zuid-drecht'
-  gitname:
-    description: 'Git name configuration for bump commit'
-    required: false
-    type: string
-    default: 'Open Catalogi bot'
-  gitmail:
-    description: 'Git mail configuration for bump commit'
+
+  gitMail:
+    description: 'Git mail configuration for the commit'
     required: false
     type: string
     default: 'bot@opencatalogi.nl'
+  gitName:
+    description: 'Git name configuration for the commit'
+    required: false
+    type: string
+    default: 'Open Catalogi bot'
+  gitDescription:
+    description: 'The description for the  commit'
+    required: false
+    type: string
+    default: ${{ github.event.repository.html_url }}
 
+  # git configuration
+  git-name:
+    description: 'Git name configuration for the commit'
+    required: false
+    type: string
+    default: 'Open Catalogi bot'
+  git-mail:
+    description: 'Git mail configuration for the commit'
+    required: false
+    type: string
+    default: 'bot@opencatalogi.nl'
+  git-commit-message:
+    description: 'The description for the  commit'
+    required: false
+    type: string
+    default: ${{ github.event.repository.html_url }}
 outputs:
   version:
     description: 'New version of softwareVersion field in publiccode.yml'
@@ -191,4 +213,7 @@ runs:
       with:
         branch: ${{ inputs.github_pages_branch }}
         folder: pwa/public
+        git-config-name: ${{ inputs.git-name }}
+        git-config-email: ${{ inputs.git-mail }}
+        commit-message: ${{ inputs.git-commit-message }}
 
