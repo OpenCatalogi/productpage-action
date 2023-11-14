@@ -1,11 +1,18 @@
-name: My PublicCode Workflow
+name: My Open Catalogi Workflow
 
 on:
+  workflow_dispatch:
   push:
+    branches:
+      - main
+      - master
+
+permissions:
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Update publiccode.yaml
-        uses: OpenCatalogi/publiccode-action@v0.0.1-beta
+      - name: Create or Update publiccode.yaml
+        uses: OpenCatalogi/publiccode-action@1.1.1
