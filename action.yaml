@@ -203,6 +203,7 @@ runs:
       run: cd pwa && npm install
 
     - name: Install parcel/watcher
+      shell: bash
       run: cd pwa && npm install @parcel/watcher
 
     - name: Remove old Gatsby cache
