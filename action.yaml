@@ -196,11 +196,15 @@ runs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: 14
+        node-version: 18
 
     - name: Install dependencies
       shell: bash
       run: cd pwa && npm install
+
+    - name: Install parcel/watcher
+      shell: bash
+      run: cd pwa && npm install @parcel/watcher
 
     - name: Remove old Gatsby cache
       shell: bash
