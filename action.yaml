@@ -37,6 +37,11 @@ inputs:
     required: false
     type: string
     default: 'https://openwebconcept.nl/wp-content/themes/openwebconcept/assets/src/images/logo@2x.png'
+  navbar_content:
+    description: 'An link to the json file that manages the navbar content'
+    required: false
+    type: string
+    default: 'https://raw.githubusercontent.com/ConductionNL/product-website-template/main/pwa/src/templates/templateParts/header/HeaderContent.json'
   github_docs_directory_paths:
     description: 'The menu item shown and the locations that they are collected from'
     required: false
@@ -84,6 +89,11 @@ inputs:
     required: false
     type: string
     default: 'https://openwebconcept.nl/'
+  footer_content:
+    description: 'An link to the json file that manages the footer content'
+    required: false
+    type: string
+    default: 'https://raw.githubusercontent.com/ConductionNL/product-website-template/main/pwa/src/templates/templateParts/footer/FooterContent.json'
   nl_design_theme_classname:
     description: 'The class name of the desired nl design theme'
     required: false
@@ -170,6 +180,7 @@ runs:
         envkey_GATSBY_GITHUB_API_BASE_URL: ${{ inputs.github_api_base_url }}
         envkey_GATSBY_FAVICON_URL: ${{ inputs.favicon_url }}
         envkey_GATSBY_NAVBAR_LOGO_URL: ${{ inputs.navbar_logo }}
+        envkey_GATSBY_HEADER_CONTENT: ${{ inputs.navbar_content }}
         envkey_GATSBY_GITHUB_DOCS_DIRECTORY_PATHS: ${{ inputs.github_docs_directory_paths }}
         envkey_GATSBY_READ_THE_DOCS_URL: ${{ inputs.read_the_docs_url }}
         envkey_GATSBY_SLACK_URL: ${{ inputs.slack_url }}
@@ -180,6 +191,7 @@ runs:
         envkey_GATSBY_JUMBOTRON_SVG: ${{ inputs.jumbotron_logo }}
         envkey_GATSBY_FOOTER_LOGO_URL: ${{ inputs.footer_logo }}
         envkey_GATSBY_FOOTER_LOGO_HREF: ${{ inputs.footer_logo_url }}
+        envkey_GATSBY_FOOTER_CONTENT: ${{ inputs.footer_content }}
         envkey_GATSBY_CONTACT_TEL: ${{ inputs.contact_tel }}
         envkey_GATSBY_CONTACT_EMAIL: ${{ inputs.contact_email }}
         envkey_GATSBY_CONTACT_WEBSITE: ${{ inputs.contact_website }}
