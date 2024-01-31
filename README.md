@@ -59,6 +59,7 @@ permissions:
 | `repository`                        | The GitHub repository to use (could be an external repository) (Optional)   | `github.event.repository.url`                                            |
 | `github_api_base_url`               | The base URL to get the README.md from (Optional)                            | `https://api.github.com/repos/OpenCatalogi/.github/contents/`             |
 | `favicon_url`                      | A base64 encoded SVG file or URL to the image used as favicon (Optional)     | `https://www.rotterdam.nl/favicon.ico?v=2`                               |
+| `page_title`                       | The title of the page (Optional)     | `Product page`                               |
 | `navbar_logo`                      | A base64 encoded SVG file or URL to the logo used in the main menu (Optional)| `https://openwebconcept.nl/wp-content/themes/openwebconcept/assets/src/images/logo@2x.png` |
 | `github_docs_directory_paths`       | The menu item shown and the locations that they are collected from (Optional)| `[{"name": "Handleidingen", "location": "/docs/handleidingen"},{"name": "Roadmap", "location": "/docs/roadmap"}]` |
 | `read_the_docs_url`                | The documentation URL (set to empty to omit documentation from your menu) (Optional) | `https://commongateway.readthedocs.io/en/latest/`                |
@@ -67,7 +68,7 @@ permissions:
 | `jumbotron_subtitle`               | The (short) subtitle used in the jumbotron (Optional)                       | `Product page`                                                           |
 | `jumbotron_description`            | The (long) description included in the jumbotron (Optional)                 | `github.event.repository.description`                                     |
 | `jumbotron_logo`                   | A base64 encoded SVG file or URL to the logo used in the jumbotron (Optional) | ''                                                                     |
-| `footer_logo`                      | The logo in the footer (Optional)                                           | `https://openwebconcept.nl/wp-content/themes/openwebconcept/assets/src/images/logo@2x.png` |
+| `footer_show_logo`                      | Whether to show to logo in the footer or not (Optional)                                           | `true` |
 | `footer_logo_url`                  | The URL that the footer image will link to (set to blank to not link) (Optional) | `https://openwebconcept.nl/` |
 | `nl_design_theme_classname`        | The class name of the desired NL design theme (Optional)                    | `open-webconcept-theme`                                                  |
 | `gitname`                          | Git name configuration for bump commit (Optional)                            | `Open Catalogi bot`                                                     |
