@@ -7,27 +7,6 @@ branding:
   color: 'blue'
 
 inputs:
-  # Build configuration
-  github_pages_branch:
-    description: 'The banche on wish the github page wil be build'
-    required: false
-    type: string
-    default: 'gh-pages'
-  github_repository_name_as_prefix:
-    description: 'Whether to use the github repository name as a prefix, set to false when using a custom domain'
-    required: false
-    type: boolean
-    default: true
-  repository:
-    description: 'The github repository to use (could be an external repository)'
-    required: false
-    type: string
-    default: ${{ github.event.repository.name }}
-  pull_from_branche:
-    description: 'The branche on witch to base the build e.g. main or development'
-    required: false
-    type: string
-    default: 'development'
 
   # General
   github_api_base_url: #depracticed
@@ -138,6 +117,28 @@ inputs:
     required: false
     type: string
     default: 'Dorpsplein 1, 1000 AA Zuid-drecht'
+    
+  # Build configuration
+  github_pages_branch:
+    description: 'The banche on wish the github page wil be build'
+    required: false
+    type: string
+    default: 'gh-pages'
+  github_repository_name_as_prefix:
+    description: 'Whether to use the github repository name as a prefix, set to false when using a custom domain'
+    required: false
+    type: boolean
+    default: true
+  repository:
+    description: 'The github repository to use (could be an external repository)'
+    required: false
+    type: string
+    default: ${{ github.event.repository.name }}
+  pull_from_branche:
+    description: 'The branche on witch to base the build e.g. main or development'
+    required: false
+    type: string
+    default: 'development'
 
   # Git Configuration
   git_name:
