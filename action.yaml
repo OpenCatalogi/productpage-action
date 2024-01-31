@@ -7,7 +7,6 @@ branding:
   color: 'blue'
 
 inputs:
-
   # General
   github_api_base_url: #depracticed
     description: 'The base url to get the README.md from'
@@ -117,7 +116,7 @@ inputs:
     required: false
     type: string
     default: 'Dorpsplein 1, 1000 AA Zuid-drecht'
-    
+
   # Build configuration
   github_pages_branch:
     description: 'The banche on wish the github page wil be build'
