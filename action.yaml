@@ -79,7 +79,7 @@ inputs:
     required: false
     type: boolean
     default: true
-  footer_logo_url:
+  footer_logo_href:
     description: 'The url that the footer image wil link to (set to blank in order not to link)'
     required: false
     type: string
@@ -211,7 +211,7 @@ runs:
         envkey_GATSBY_FOOTER_CONTENT: ${{ inputs.footer_content }}
         envkey_GATSBY_FOOTER_CONTENT_HEADER: ${{ inputs.footer_content_header }}
         envkey_GATSBY_FOOTER_SHOW_LOGO: ${{ inputs.footer_show_logo }}
-        envkey_GATSBY_FOOTER_LOGO_HREF: ${{ inputs.footer_logo_url }}
+        envkey_GATSBY_FOOTER_LOGO_HREF: ${{ inputs.footer_logo_href }}
         envkey_GATSBY_FOOTER_SHOW_CREATOR: ${{ inputs.footer_show_creator }}
         envkey_GATSBY_JUMBOTRON_TITLE: ${{ inputs.jumbotron_title }}
         envkey_GATSBY_JUMBOTRON_SUBTITLE: ${{ inputs.jumbotron_subtitle }}
