@@ -12,12 +12,12 @@ inputs:
     description: 'The base url to get the README.md from'
     required: false
     type: string
-    default: 'https://api.github.com/repos/OpenCatalogi/.github/contents/'
-  favicon_url:
-    description: 'An base64 encoded svg file or url to the image used as favicon'
+    default: 'https://api.github.com/repos/${{ github.event.repository.name }}/contents'
+  favicon_image:
+    description: 'A base64 encoded svg file or url to the image used as favicon'
     required: false
     type: string
-    default: 'https://www.rotterdam.nl/favicon.ico?v=2'
+    default: 'https://dev.opencatalogi.nl/static/logo_OpenCatalogi-8b1b0a001c3f37dae4d3f69b5964ec72.png'
   nl_design_theme_classname:
     description: 'The class name of the desired nl design theme'
     required: false
@@ -28,24 +28,18 @@ inputs:
     required: false
     type: string
     default: 'Product page'
-
-  # Header
-  navbar_logo: #depracticed
-    description: 'An base64 encoded svg file or url to the logo used in the main menu'
-    required: false
-    type: string
-    default: 'https://openwebconcept.nl/wp-content/themes/openwebconcept/assets/src/images/logo@2x.png'
-  navbar_content:
-    description: 'An link to the json file that manages the navbar content'
-    required: false
-    type: string
-    default: 'https://raw.githubusercontent.com/ConductionNL/product-website-template/main/pwa/src/templates/templateParts/header/HeaderContent.json'
-
   github_docs_directory_paths:
     description: 'The menu item shown and the locations that they are collected from'
     required: false
     type: string
     default: '[{"name": "Handleidingen", "location": "/docs/handleidingen"},{"name": "Roadmap", "location": "/docs/roadmap"}]'
+
+  # Navbar
+  navbar_content:
+    description: 'A link to the json file that manages the navbar content'
+    required: false
+    type: string
+    default: 'https://raw.githubusercontent.com/ConductionNL/product-website-template/main/pwa/src/templates/templateParts/header/HeaderContent.json'
   read_the_docs_url:
     description: 'The documantion url (set to empty to documentation slack form your menu)'
     required: false
@@ -73,7 +67,7 @@ inputs:
     required: false
     type: string
     default: ${{ github.event.repository.description }}
-  jumbotron_logo:
+  jumbotron_image:
     description: 'An base64 encoded svg file or url to the logo used in the jumbotron'
     required: false
     type: string
@@ -85,22 +79,34 @@ inputs:
     required: false
     type: boolean
     default: true
-  footer_logo_url:
+  footer_logo_href:
     description: 'The url that the footer image wil link to (set to blank in order not to link)'
     required: false
     type: string
     default: 'https://openwebconcept.nl/'
   footer_content:
-    description: 'An link to the json file that manages the footer content'
+    description: 'A link to the json file that manages the footer content'
     required: false
     type: string
     default: 'https://raw.githubusercontent.com/ConductionNL/product-website-template/main/pwa/src/templates/templateParts/footer/FooterContent.json'
+  footer_content_header:
+    description: 'The heading size used in the footer ("heading-1" | "heading-2" | "heading-3" | "heading-4" | "heading-5")'
+    required: false
+    type: string
+    default: 'heading-3'
   footer_show_creator:
     description: 'Shows the <> with love from conduction link'
     required: false
     type: boolean
     default: true
 
+
+  # Product Page / Old settings (depracticed)
+  navbar_logo: #depracticed
+    description: 'A base64 encoded svg file or url to the logo used in the main menu'
+    required: false
+    type: string
+    default: 'https://openwebconcept.nl/wp-content/themes/openwebconcept/assets/src/images/logo@2x.png'
   contact_tel: #depracticed
     description: 'A phone number where your organisation is reachable'
     required: false
@@ -128,16 +134,21 @@ inputs:
     required: false
     type: string
     default: 'gh-pages'
+  github_repository_name:
+    description: 'The name of the GitHub repository'
+    required: false
+    type: string
+    default: ${{ github.event.repository.name }}
   github_repository_name_as_prefix:
     description: 'Whether to use the github repository name as a prefix, set to false when using a custom domain'
     required: false
     type: boolean
     default: true
-  repository:
-    description: 'The github repository to use (could be an external repository)'
+  github_repository_url:
+    description: 'The url to the GitHub repository'
     required: false
     type: string
-    default: ${{ github.event.repository.name }}
+    default: ${{ github.event.repository.url }}
   pull_from_branche:
     description: 'The branche on witch to base the build e.g. main or development'
     required: false
@@ -186,33 +197,33 @@ runs:
       uses: SpicyPizza/create-envfile@v2.0
       with:
         # for lagacy purposes
-        envkey_GITHUB_REPOSITORY_NAME: ${{ inputs.repository }}
+        envkey_GITHUB_REPOSITORY_NAME: ${{ inputs. github_repository_name }}
         envkey_USE_GITHUB_REPOSITORY_NAME_AS_PATH_PREFIX: ${{ inputs.github_repository_name_as_prefix }}
         # Correct env values
+        envkey_GATSBY_GITHUB_REPOSITORY_NAME: ${{ inputs. github_repository_name }}
         envkey_GATSBY_USE_GITHUB_REPOSITORY_NAME_AS_PATH_PREFIX: ${{ inputs.github_repository_name_as_prefix }}
-        envkey_GATSBY_GITHUB_REPOSITORY_NAME: ${{ inputs.repository }}
+        envkey_GATSBY_GITHUB_REPOSITORY_URL: ${{ inputs. github_repository_url }}
         envkey_GATSBY_GITHUB_API_BASE_URL: ${{ inputs.github_api_base_url }}
-        envkey_GATSBY_FAVICON_URL: ${{ inputs.favicon_url }}
-        envkey_GATSBY_NAVBAR_LOGO_URL: ${{ inputs.navbar_logo }}
-        envkey_GATSBY_HEADER_CONTENT: ${{ inputs.navbar_content }}
         envkey_GATSBY_GITHUB_DOCS_DIRECTORY_PATHS: ${{ inputs.github_docs_directory_paths }}
-        envkey_GATSBY_READ_THE_DOCS_URL: ${{ inputs.read_the_docs_url }}
         envkey_GATSBY_SLACK_URL: ${{ inputs.slack_url }}
-        envkey_GATSBY_GITHUB_REPOSITORY_URL: ${{ inputs.repository }}
+        envkey_GATSBY_READ_THE_DOCS_URL: ${{ inputs.read_the_docs_url }}
+        envkey_GATSBY_NAVBAR_CONTENT: ${{ inputs.navbar_content }}
+        envkey_GATSBY_FOOTER_CONTENT: ${{ inputs.footer_content }}
+        envkey_GATSBY_FOOTER_CONTENT_HEADER: ${{ inputs.footer_content_header }}
+        envkey_GATSBY_FOOTER_SHOW_LOGO: ${{ inputs.footer_show_logo }}
+        envkey_GATSBY_FOOTER_LOGO_HREF: ${{ inputs.footer_logo_href }}
+        envkey_GATSBY_FOOTER_SHOW_CREATOR: ${{ inputs.footer_show_creator }}
         envkey_GATSBY_JUMBOTRON_TITLE: ${{ inputs.jumbotron_title }}
         envkey_GATSBY_JUMBOTRON_SUBTITLE: ${{ inputs.jumbotron_subtitle }}
         envkey_GATSBY_JUMBOTRON_DESCRIPTION: ${{ inputs.jumbotron_description }}
-        envkey_GATSBY_JUMBOTRON_SVG: ${{ inputs.jumbotron_logo }}
-        envkey_GATSBY_FOOTER_LOGO_URL: ${{ inputs.footer_show_logo }}
-        envkey_GATSBY_FOOTER_LOGO_HREF: ${{ inputs.footer_logo_url }}
-        envkey_GATSBY_FOOTER_SHOW_CREATOR: ${{ inputs.footer_show_creator }}
-        envkey_GATSBY_FOOTER_CONTENT: ${{ inputs.footer_content }}
+        envkey_GATSBY_JUMBOTRON_IMAGE: ${{ inputs.jumbotron_image }}
+        envkey_GATSBY_FAVICON_IMAGE: ${{ inputs.favicon_image }}
+        envkey_GATSBY_PAGE_TITLE: ${{ inputs.page_title }}
+        envkey_GATSBY_NL_DESIGN_THEME_CLASSNAME: ${{ inputs.nl_design_theme_classname }}
         envkey_GATSBY_CONTACT_TEL: ${{ inputs.contact_tel }}
         envkey_GATSBY_CONTACT_EMAIL: ${{ inputs.contact_email }}
         envkey_GATSBY_CONTACT_WEBSITE: ${{ inputs.contact_website }}
         envkey_GATSBY_CONTACT_ADRES: ${{ inputs.contact_adres }}
-        envkey_GATSBY_NL_DESIGN_THEME_CLASSNAME: ${{ inputs.nl_design_theme_classname }}
-        envkey_GATSBY_PAGE_TITLE: ${{ inputs.page_title }}
 
         directory: pwa/static
         file_name: .env.production
