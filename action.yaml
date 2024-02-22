@@ -39,7 +39,7 @@ inputs:
     description: 'A link to the json file that manages the navbar content'
     required: false
     type: string
-    default: 'https://raw.githubusercontent.com/ConductionNL/product-website-template/main/pwa/src/templates/templateParts/header/HeaderContent.json'
+    default: 'https://raw.githubusercontent.com/OpenCatalogi/product-website-template/main/pwa/src/templates/templateParts/header/HeaderContent.json'
   read_the_docs_url:
     description: 'The documantion url (set to empty to documentation slack form your menu)'
     required: false
@@ -88,7 +88,7 @@ inputs:
     description: 'A link to the json file that manages the footer content'
     required: false
     type: string
-    default: 'https://raw.githubusercontent.com/ConductionNL/product-website-template/main/pwa/src/templates/templateParts/footer/FooterContent.json'
+    default: 'https://raw.githubusercontent.com/OpenCatalogi/product-website-template/main/pwa/src/templates/templateParts/footer/FooterContent.json'
   footer_content_header:
     description: 'The heading size used in the footer ("heading-1" | "heading-2" | "heading-3" | "heading-4" | "heading-5")'
     required: false
@@ -189,7 +189,7 @@ runs:
     - name: Get the Product Website Template Code
       uses: actions/checkout@v2
       with:
-        repository: ConductionNL/product-website-template
+        repository: OpenCatalogi/product-website-template
         ref: ${{ inputs.pull_from_branche }}
 
     # With special thanxs to https://github.com/SpicyPizza/create-envfile
