@@ -52,32 +52,39 @@ permissions:
 > ![Page Action done](docs/page_build_done.png)
 
 ## Input
-| Input Name                          | Description                                                                   | Default Value                                                            |
-|------------------------------------|-------------------------------------------------------------------------------|--------------------------------------------------------------------------|
-| `github_pages_branch`               | The branch on which the GitHub page will be built (Optional)                | `gh-pages`                                                               |
-| `github_repository_name_as_prefix`  | Whether to use the GitHub repository name as a prefix (Optional)             | `true`                                                                   |
-| `repository`                        | The GitHub repository to use (could be an external repository) (Optional)   | `github.event.repository.url`                                            |
-| `github_api_base_url`               | The base URL to get the README.md from (Optional)                            | `https://api.github.com/repos/OpenCatalogi/.github/contents/`             |
-| `favicon_url`                      | A base64 encoded SVG file or URL to the image used as favicon (Optional)     | `https://www.rotterdam.nl/favicon.ico?v=2`                               |
-| `navbar_logo`                      | A base64 encoded SVG file or URL to the logo used in the main menu (Optional)| `https://openwebconcept.nl/wp-content/themes/openwebconcept/assets/src/images/logo@2x.png` |
-| `github_docs_directory_paths`       | The menu item shown and the locations that they are collected from (Optional)| `[{"name": "Handleidingen", "location": "/docs/handleidingen"},{"name": "Roadmap", "location": "/docs/roadmap"}]` |
-| `read_the_docs_url`                | The documentation URL (set to empty to omit documentation from your menu) (Optional) | `https://commongateway.readthedocs.io/en/latest/`                |
-| `slack_url`                        | The Slack URL (set to empty to omit Slack from your menu) (Optional)          | `https://join.slack.com/t/samenorganiseren/shared_invite/zt-22wtrcb1y-RMdSp6C1LMhUaCZQlL9trQ` |
-| `jumbotron_title`                  | The title of the jumbotron (Optional)                                       | `github.event.repository.name`                                          |
-| `jumbotron_subtitle`               | The (short) subtitle used in the jumbotron (Optional)                       | `Product page`                                                           |
-| `jumbotron_description`            | The (long) description included in the jumbotron (Optional)                 | `github.event.repository.description`                                     |
-| `jumbotron_logo`                   | A base64 encoded SVG file or URL to the logo used in the jumbotron (Optional) | ''                                                                     |
-| `footer_logo`                      | The logo in the footer (Optional)                                           | `https://openwebconcept.nl/wp-content/themes/openwebconcept/assets/src/images/logo@2x.png` |
-| `footer_logo_url`                  | The URL that the footer image will link to (set to blank to not link) (Optional) | `https://openwebconcept.nl/` |
-| `nl_design_theme_classname`        | The class name of the desired NL design theme (Optional)                    | `open-webconcept-theme`                                                  |
-| `gitname`                          | Git name configuration for bump commit (Optional)                            | `Open Catalogi bot`                                                     |
-| `gitmail`                          | Git mail configuration for bump commit (Optional)                            | `bot@opencatalogi.nl`                                                   |
+| Input Name                          | Description                                                                          | Default Value                                                                                                                            |
+|-------------------------------------|--------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| `github_api_base_url`               | The base URL to get the README.md from (Optional)                                    | `https://api.github.com/repos/OpenCatalogi/.github/contents/`                                                                            |
+| `favicon_image`                     | A base64 encoded SVG file or URL to the image used as favicon (Optional)             | `https://dev.opencatalogi.nl/static/logo_OpenCatalogi-8b1b0a001c3f37dae4d3f69b5964ec72.png`                                              |
+| `nl_design_theme_classname`         | The class name of the desired NL design theme (Optional)                             | `open-webconcept-theme`                                                                                                                  |
+| `page_title`                        | The title of the page (Optional)                                                     | `Product page`                                                                                                                           |
+| `github_docs_directory_paths`       | The menu item shown and the locations that they are collected from (Optional)        | `[{"name": "Handleidingen", "location": "/docs/handleidingen"},{"name": "Roadmap", "location": "/docs/roadmap"}]`                        |
+| `navbar_logo`                       | A base64 encoded SVG file or URL to the logo used in the main menu (Optional)        | `https://openwebconcept.nl/wp-content/themes/openwebconcept/assets/src/images/logo@2x.png`                                               |
+| `navbar_content`                    | A link to the json file that manages the navbar content (Optional)                   | `https://raw.githubusercontent.com/ConductionNL/product-website-template/main/pwa/src/templates/templateParts/header/HeaderContent.json` |
+| `github_pages_branch`               | The branch on which the GitHub page will be built (Optional)                         | `gh-pages`                                                                                                                               |
+| `read_the_docs_url`                 | The documentation URL (set to empty to omit documentation from your menu) (Optional) | `https://commongateway.readthedocs.io/en/latest/`                                                                                        |
+| `slack_url`                         | The Slack URL (set to empty to omit Slack from your menu) (Optional)                 | `https://join.slack.com/t/samenorganiseren/shared_invite/zt-22wtrcb1y-RMdSp6C1LMhUaCZQlL9trQ`                                            |
+| `jumbotron_title`                   | The title of the jumbotron (Optional)                                                | `github.event.repository.name`                                                                                                           |
+| `jumbotron_subtitle`                | The (short) subtitle used in the jumbotron (Optional)                                | `Product page`                                                                                                                           |
+| `jumbotron_description`             | The (long) description included in the jumbotron (Optional)                          | `github.event.repository.description`                                                                                                    |
+| `jumbotron_image`                   | A base64 encoded SVG file or URL to the logo used in the jumbotron (Optional)        | ''                                                                                                                                       |
+| `footer_show_logo`                  | Whether to show to logo in the footer or not (Optional)                              | `true`                                                                                                                                   |
+| `footer_logo_href`                  | The URL that the footer image will link to (set to blank to not link) (Optional)     | `https://openwebconcept.nl/`                                                                                                             |
+| `footer_content`                    | A link to the json file that manages the footer content (Optional)                   | `https://raw.githubusercontent.com/ConductionNL/product-website-template/main/pwa/src/templates/templateParts/header/HeaderContent.json` |
+| `footer_content_header`             | The heading size used in the footer ("heading-1" to "heading-5" ) (Optional)         | `heading-3`                                                                                                                              |
+| `footer_show_creator`               | Shows the "<> with love from Conduction" link' (Optional)                            | `true`                                                                                                                                   |
+| `github_repository_name`            | The name of the GitHub repository (Optional)                                         | `github.event.repository.name`                                                                                                           |
+| `github_repository_name_as_prefix`  | Whether to use the GitHub repository name as a prefix (Optional)                     | `true`                                                                                                                                   |
+| `github_repository_url`             | The url to the GitHub repository (Optional)                                          | `github.event.repository.url`                                                                                                            |
+| `pull_from_branche`                 | The branche on witch to base the build e.g. main or development                      | `development`                                                                                                                            |
+| `gitname`                           | Git name configuration for bump commit (Optional)                                    | `Open Catalogi bot`                                                                                                                      |
+| `gitmail`                           | Git mail configuration for bump commit (Optional)                                    | `bot@opencatalogi.nl`                                                                                                                    |
 
 ## Output
-| Output Name     | Description                                                              |
-|-----------------|--------------------------------------------------------------------------|
-| `version`       | New version of the `softwareVersion` field in `publiccode.yml`          |
-| `releaseDate`   | New release date of the `releaseDate` field in `publiccode.yml`        |
+| Output Name     | Description                                                    |
+|-----------------|----------------------------------------------------------------|
+| `version`       | New version of the `softwareVersion` field in `publiccode.yml` |
+| `releaseDate`   | New release date of the `releaseDate` field in `publiccode.yml`|
 
 ## Tips
 Besides making your product readable for humans its als a good idea to make it machisne readable, this helps your project to be indexed by the likes of opencatalogi.nl. Luckily this is very simple, just ad the publiccode action to your workflow
